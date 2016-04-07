@@ -33,3 +33,10 @@ Sub Variables()
     MsgBox (x)
     MsgBox (y)
 End Sub
+
+Sub Grafica()
+Charts.Add
+ActiveChart.ChartType = xlXYScatterLines
+ActiveChart.SetSourceData Source:=Sheets("estacion").Range("E1:E14")
+ActiveChart.Location Where:=xlLocationAsObject, Name:="estacion"
+End Sub
