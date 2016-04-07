@@ -40,3 +40,30 @@ ActiveChart.ChartType = xlXYScatterLines
 ActiveChart.SetSourceData Source:=Sheets("estacion").Range("E1:E14")
 ActiveChart.Location Where:=xlLocationAsObject, Name:="estacion"
 End Sub
+
+Sub Chart()
+    Dim MyChart As Chart
+    Set MyChart = ActiveSheet.Shapes.AddChart.Chart
+    'Set MyChart = Charts.Add
+    With MyChart
+        .ChartType = xlXYScatterLines
+        '.SetSourceData Source:=Sheets("estacion").Range("estacion!$E$1:$E$10")
+        .SetSourceData Source:=Sheets("estacion").Range("E1:E10")
+    End With
+End Sub
+
+Sub Chart()
+    Dim MyChart As Chart
+    Set MyChart = ActiveSheet.Shapes.AddChart.Chart
+    'Set MyChart = Charts.Add
+    With MyChart
+        .ChartType = xlXYScatterLines
+        .SetSourceData Source:=Sheets("estacion").Range("E1:E10"), PlotBy:=xlColumns
+        .HasTitle = True
+        .ChartTitle.Text = "My chart!"
+        .Axes(xlCategory, xlPrimary).HasTitle = True
+        .Axes(xlCategory, xlPrimary).AxisTitle.Characters.Text = Range("E1")
+        .Axes(xlValue, xlPrimary).HasTitle = True
+        .Axes(xlValue, xlPrimary).AxisTitle.Characters.Text = Range("D1")
+    End With
+End Sub
