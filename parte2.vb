@@ -73,7 +73,7 @@ Sub aPromediar2()
             Exit For
         End If
     Next m
-    MsgBox contadorFilas
+    
     For c = 1 To Worksheets("ESTACIÓN 1").Rows.Count Step 1
         If IsEmpty(Cells(c, 1).Value) Then
             Exit Sub 
@@ -99,4 +99,53 @@ Sub aPromediar2()
     Next c
     
 
+End Sub
+
+
+Sub aSolo2()
+    
+    Dim contador As Integer
+    Dim final As Integer
+    Dim filasSolo As Integer
+    Dim cadaCinco As Integer
+    contador = -2
+    final = 0
+    filasSolo = 1
+    cadaCinco = -4
+    'Worksheets("PROM EST 1").Activate
+    For s = 1 To Worksheets("PROM EST 1").Rows.Count Step 5
+        filasSolo = filasSolo + 1
+        
+        If IsEmpty(ThisWorkbook.Sheets("PROM EST 1").Cells(s + 1, 1).Value) Then
+            Exit Sub
+        Else
+            cadaCinco = cadaCinco + 5
+            For c = 1 To 46
+                contador = contador + 2
+                For i = 1 To 5
+                    For j = 1 To 2
+                        '2,2
+                        '2,3
+                        '2,4
+                        final = final + 1
+                        If c = 46 And i = 5 And j = 2 Then
+                            final = 0
+                            contador = -2
+                        End If
+                        ThisWorkbook.Sheets("SOLOA1").Cells(filasSolo, final + 1).Value = _
+                        ThisWorkbook.Sheets("PROM EST 1").Cells(i + cadaCinco, j + (4 + contador)).Value
+                        '2,5
+                        '2,6
+                        '3,5
+                        '3,6
+                        '...
+                        '2,7
+                        '2,8
+                    Next j
+                Next i
+            Next c
+            ThisWorkbook.Sheets("SOLOA1").Cells(filasSolo, 1) = ThisWorkbook.Sheets("PROM EST 1").Cells(filasSolo, 1)
+        End If
+    Next s
+    
 End Sub
