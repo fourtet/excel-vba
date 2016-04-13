@@ -12,7 +12,7 @@ Sub aGrafica2()
             Dim myChtObj As ChartObject
 
             Set myChtObj = Worksheets("GRA1").ChartObjects.Add _
-                (Left:=0, Width:=650, Top:=15+225, Height:=225)
+                (Left:=0, Width:=650, Top:=desplazarGrafica, Height:=225)
             myChtObj.Chart.SetSourceData Source:=Sheets("ESTACIÓN 1").Range("E1:E6,G1:G6,I1:I6,K1:K6,M1:M6")
             myChtObj.Chart.ChartType = xlXYScatterLines
             myChtObj.Chart.ChartTitle.Text = "Grafica"
