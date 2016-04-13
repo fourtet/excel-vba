@@ -49,20 +49,14 @@ Sub aQuitarSerie2()
     strRangeFromFormula = Mid(strFormula, _
                         InStrRev(strFormula, "!") + 1, _
                         InStrRev(strFormula, ",") - InStrRev(strFormula, "!") - 2)
-    'test here
-    'Debug.Print strRangeFromFormula 'result: $D$4:$D$8
-    MsgBox strRangeFromFormula
+    
     
     numeroFilaSerie = Mid(strRangeFromFormula, 5)
-    MsgBox numeroFilaSerie
     
     celdasAQuitar = "E" & numeroFilaSerie & ":AZ" & numeroFilaSerie
-    MsgBox celdasAQuitar
 
     Worksheets("ESTACIÓN 1").Range(celdasAQuitar) = ""
 
-    
-    'nombreDeLaSerie = Worksheets("ESTACIÓN 1").ChartObjects("My chart").Name
     'Selection.Delete
 End Sub
 
