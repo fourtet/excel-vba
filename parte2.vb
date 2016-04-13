@@ -1,11 +1,11 @@
 Sub aGrafica2()
     Dim desplazarGrafica As Integer
-    desplazarGrafica = 15
+    desplazarGrafica = -210
     Worksheets("ESTACIÓN 1").Activate
     For j = 1 To Worksheets("ESTACIÓN 1").Rows.Count Step 5
         Dim iMasUno As Integer
         desplazarGrafica = desplazarGrafica + 225
-        If IsEmpty(Cells(j, 1).Value) Then
+        If IsEmpty(Cells(j+1, 1).Value) Then
             Exit Sub
         Else
             Dim i As Integer
