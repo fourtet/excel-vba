@@ -1,5 +1,5 @@
 Sub aGrafica2()
-    Dim desplazarGrafica as Integer
+    Dim desplazarGrafica As Integer
     desplazarGrafica = 15
     Worksheets("ESTACIÓN 1").Activate
     For j = 1 To Worksheets("ESTACIÓN 1").Rows.Count Step 5
@@ -14,14 +14,20 @@ Sub aGrafica2()
             Set myChtObj = Worksheets("GRA1").ChartObjects.Add _
                 (Left:=0, Width:=650, Top:=desplazarGrafica, Height:=225)
             myChtObj.Chart.SetSourceData Source:=Sheets("ESTACIÓN 1").Range("E1:E6,G1:G6,I1:I6,K1:K6,M1:M6")
-            myChtObj.Chart.ChartType = xlXYScatterLines
-            myChtObj.Chart.ChartTitle.Text = "Grafica"
+            myChtObj.Chart.ChartType = xlLine
+            myChtObj.Chart.Legend.Position = xlLegendPositionRight
+            'myChtObj.Chart.HasTitle = True
             For i = 1 To 5
                 iMasUno = j + i
                 
-                'If i = 4 Then
-                    'myChtObj.Chart.SeriesCollection.NewSeries
-                'End If
+                If i = 4 Then
+                    If myChtObj.Chart.SeriesCollection.Count = 4 Then
+                        myChtObj.Chart.SeriesCollection.NewSeries
+                    End If
+                End If
+                myChtObj.Chart.HasTitle = True
+                myChtObj.Chart.ChartTitle.Text = Worksheets("ESTACIÓN 1").Range("A" & iMasUno) & _
+                Worksheets("ESTACIÓN 1").Range("B" & iMasUno) & Worksheets("ESTACIÓN 1").Range("C" & iMasUno)
                 myChtObj.Chart.SeriesCollection(i).Values = Worksheets("ESTACIÓN 1").Range("E" & iMasUno & ",G" & iMasUno & ",I" & iMasUno & ",K" & iMasUno & ",M" & iMasUno & ",O" & iMasUno & ",Q" & iMasUno & ",S" & iMasUno & ",U" & iMasUno & ",W" & iMasUno & ",Y" & iMasUno & ",AA" & iMasUno & ",AC" & iMasUno & ",AE" & iMasUno & ",AG" & iMasUno & ",AI" & iMasUno & ",AK" & iMasUno & ",AM" & iMasUno & ",AO" & iMasUno & ",AQ" & iMasUno & ",AS" & iMasUno & ",AU" & iMasUno & ",AW" & iMasUno & ",AY" & iMasUno)
                 myChtObj.Chart.SeriesCollection(i).XValues = ""
                 myChtObj.Chart.SeriesCollection(i).Name = Worksheets("ESTACIÓN 1").Range("D" & iMasUno)
