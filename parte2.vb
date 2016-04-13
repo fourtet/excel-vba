@@ -115,7 +115,7 @@ Sub aSolo2()
     'Worksheets("PROM EST 1").Activate
     For s = 1 To Worksheets("PROM EST 1").Rows.Count Step 5
         filasSolo = filasSolo + 1
-        If s = 25 Then
+        If (s Mod 5) = 0 Then
             ThisWorkbook.Saved = True
         End If
         If IsEmpty(ThisWorkbook.Sheets("PROM EST 1").Cells(s + 1, 1).Value) Then
